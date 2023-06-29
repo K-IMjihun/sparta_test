@@ -1,7 +1,7 @@
 package com.sparta.test.Controller;
 
-import com.sparta.test.Dto.UserResponseDto;
-import com.sparta.test.Service.UserService;
+import com.sparta.test.Dto.MemberResponseDto;
+import com.sparta.test.Service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,17 +13,21 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/member")
-public class UserController {
-    private final UserService userService;
-    @GetMapping
-    public List<UserResponseDto> getUsers(){
-        return userService.getUsers();
-    }
-    @GetMapping("{id}")
-    public UserResponseDto getUser(@PathVariable Long id){
-        return userService.getUser(id);
+public class MemberController {
+    private final MemberService memberService;
 
+    @GetMapping("{id}")
+    public MemberResponseDto getMemberInfo(@PathVariable Long id){
+        return memberService.findMember(id);
     }
+
+    @GetMapping
+    public List<MemberResponseDto> findAllMember(){
+        return memberService.findAllMember();
+    }
+
+
+
 
 
 
