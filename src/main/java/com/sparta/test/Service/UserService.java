@@ -29,7 +29,7 @@ public class UserService {
 
     private User findUser(Long id) {
         return userRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("선택한 메모가 존재하지 않습니다")
+                new NullPointerException("회원 상세 조회 실패")
         );
     }
 
